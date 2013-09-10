@@ -1,0 +1,113 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[koi8-r]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[justification=centering,labelsep=period]{caption}
+\usepackage{indentfirst}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{textcomp}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{fontogr}
+% \usepackage{pscyr}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+
+
+% \renewcommand{\captionlabeldelim} {.}
+
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+\unitlength=1mm
+
+\usepackage{listings} %% собственно, это и есть пакет listings
+% \usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}} %% это сделает текст заголовка белым
+%% код ниже нарисует серую рамочку вокруг заголовка кода.
+\DeclareCaptionFormat{listing}{\colorbox{white}{\parbox{\textwidth}{#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=black,textfont=black}
+\renewcommand{\lstlistingname}{Листинг}
+
+
+\begin{document}
+
+
+\usetikzlibrary{arrows}
+
+\lstset{ %
+ language=Bash,                 % выбор языка для подсветки (здесь это С)
+ basicstyle=\small\ttfamily, % размер и начертание шрифта для подсветки кода
+ numbers=left,               % где поставить нумерацию строк (слева\справа)
+ numberstyle=\tiny,           % размер шрифта для номеров строк
+ stepnumber=1,                   % размер шага между двумя номерами строк
+ numbersep=5pt,                % как далеко отстоят номера строк от
+ % подсвечиваемого кода
+ backgroundcolor=\color{white}, % цвет фона подсветки - используем
+ showspaces=false,            % показывать или нет пробелы специальными
+% отступами
+ showstringspaces=false,      % показывать или нет пробелы в строках
+ showtabs=false,             % показывать или нет табуляцию в строках
+ frame=single,              % рисовать рамку вокруг кода
+ tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+ captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+ breaklines=true,           % автоматически переносить строки (да\нет)
+% wordwrap=true,
+ breakatwhitespace=false, % переносить строки только если есть пробел
+ escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+ }
+
+
+ 
+% \cygfamily
+
+\author{Кузнецов В.В., ассистент кафедры ЭИУ1-КФ}
+\title{Лабораторная работа \No 2 по курсу <<Радиотехнические устройства и
+системы>> \\
+Построение графиков в GNU/Octave}
+\maketitle
+
+
+\section{Цель работы}
+
+Целью семинара является ознакомление с базовыми принципами проведения вычислений
+системы численной математики GNU/Octave.
+
+Система GNU/Octave --- это высокоуровневый язык программирования,
+предназначенный прежде всего для численных расчётов. Он предоставляет удобный
+интерфейс командной строки для численного решения линейных и нелинейных задач, а
+также для выполнения других численных экспериментов. С помощью GNU/Octave можно
+решать задачи в том числе генерации и обработки сигналов. Установить GNU/Octave
+для Linux можно в один клик через пакетный менеджер, а для Windows её можно
+бесплатно скачать с сайта разработчика \url{http://octave.sourceforge.net}. 
+
+Octave работает в режиме командной строки. GNU/Octave позволяет выполнять
+операции с действительными и комплексными числами, матрицами, решать системы
+линейных уравнений, обрабатывать данные, строить графики и диаграммы. Синтаксис
+команд Octave близок к языку С и повторяет среду Matlab.
+
+В ходе выполнения лабораторной работы необходимо ознакомится с принципами
+построения графиков в среде GNU/Octave.
+
+При подготовке руководства использовались материалы с сайтов
+\url{http://mydebianblog.blogspot.com} (на русском языке) и
+\url{http://en.wikibooks.org/wiki/Octave_Programming_Tutorial/Getting_started}
+(на английском языке).
+
+\section{Применение Octave для расчётов}
+
+
+
+Как видно из простейших примеров, у Octave достаточно широкие возможности, а по
+синтаксису он близок к Matlab.
+
+
+\end{document}

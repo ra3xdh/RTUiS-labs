@@ -2,8 +2,8 @@
 *.lof
 *.aux
 *.log
-*.png
 *.tex~
+*swp
 octave-core
 *.backup
 *.out
