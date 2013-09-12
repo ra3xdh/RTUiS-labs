@@ -75,8 +75,9 @@
 Введение в GNU/Octave}
 \maketitle
 
+\section{Введение}
 
-\section{Цель работы}
+\subsection{Цель работы}
 
 Целью семинара является ознакомление с базовыми принципами проведения вычислений
 системы численной математики GNU/Octave.
@@ -104,6 +105,47 @@ Octave близок к языку С и повторяет среду Matlab.
 \url{http://en.wikibooks.org/wiki/Octave_Programming_Tutorial/Getting_started}
 (на английском языке).
 
+\subsection{Инструкция по установке Octave}
+
+\subsubsection{Установка для ОС Linux}
+
+Для ОС Linux система Octave устанавливается в один клик через пакетный
+менеджер, либо с использованием команд \verb|zypper| (для дистрибутива
+openSUSE), \verb|aptitude| (для дистрибутива Debian и производных, в т.ч.
+Ubuntu) или \verb|yum| (для дистрибутива Fedora). Скачивать программу с сайта
+разработчиков не нужно! Пакеты расширений Octave тоже устанавливаются через
+один клик в пакетном менеджере дистрибутива.
+
+\subsubsection{Установка для ОС Windows}
+
+Для установки Octave в ОС Windows нужно выполнить следующие действия:
+\begin{enumerate}
+ \item По ссылке
+\url{
+http://sourceforge.net/projects/octave/files/Octave\%20Windows\%20binaries/Octav
+e\%203.6.4\%20for\%20Windows\%20MinGW\%20installer/} скачать два архива 7zip
+(сама программа и пакеты расширений).
+ \item Создать каталог \verb|C:\Octave|
+ \item Распаковать два архива в этот каталог.
+ \item Файл \verb|octave3.6.4_gcc4.6.2.lnk|, который после распаковки архивов
+находится в каталоге \verb|C:\Octave|, скопировать на рабочий стол.
+ \item Запустить Octave двойным щелчком мыши по этому ярлыку на рабочем столе.
+Через некоторое время (до 3 минут) откроется консоль Octave.
+ \item В консоли Octave выполнить следующие команды, чтобы установить пакеты
+расширений:
+ 
+\begin{verbatim}
+pkg rebuild -auto
+pkg rebuild -noauto ad 
+pkg rebuild -noauto nan 
+pkg rebuild -noauto gsl 
+pkg rebuild -auto java
+ \end{verbatim}
+ \item Можно работать.
+
+\end{enumerate}
+
+
 \section{Применение Octave для расчётов}
 
 \subsection{Запуск и выход из программы}
@@ -115,7 +157,9 @@ Windows. После запуска Octave пользователь видит окно интерпретатора (см.
 используемой версии и ОС). Чтобы запустить GNU/Octave нужно для Linux набрать в
 терминале \verb|octave|, а для Windows щёлкнуть по ярлыку, создаваемом на
 рабочем столе после установки программы.
-% 
+
+\newpage
+
 \begin{figure}[!ht]
 \begin{verbatim}
 GNU Octave, version 3.6.4
