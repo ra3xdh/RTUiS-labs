@@ -299,108 +299,6 @@ ans = -1.0000e+00 + 1.2246e-16i
 Синтаксис здесь такой же, как и в языке С. Регистр букв имеет значение.
 Применяются те же операции и скобки, как и в языке С.
 
-
-\subsection{Пакетный и терминальный режимы работы Octave}
-
-Возможны два варианта решения любой задачи в Octave:
-
-1. Терминальный режим. В этом режиме в окно интерпретатора
-последовательно вводятся отдельные команды.
-
-2. Программный режим. В этом режиме создаётся текстовый файл с расширением
-\verb|.m|, в котором хранятся последовательно выполняемые команды Octave. Затем
-этот текстовый файл (программа на языке Octave) запускается на выполнение
-в среде Octave. 
-
-Рассмотрим пример решения задач в обоих режимах.
-
-Рассчитаем резонансную частоту LC - контура по формуле, известной из курса
-электротехники:
-
-\begin{equation}
- f=\frac{1}{2\pi\sqrt{LC}}
-\end{equation}
-
-Где $L$ --- индуктивность катушки, Гн;
- 
-$C_{к}$ --- ёмкость конденсатора, Ф;
-
-$f$ --- частота, Гц
-
-
-
-Чтобы решить нашу задачу в терминальном режиме введём последовательно после
-того как Octave запустится и выдаст приглашение, подобное
-рис.\ref{octave-start}, команды, показанные на рис. \ref{LC_term}. На рисунке
-приведён вывод для Linux, отличие для системы Windows заключается только в
-способе запуска программы.
-
-\begin{figure}[!ht]
-\begin{verbatim}
-vvk@linux-bmx0:~> octave
-GNU Octave, version 3.6.4
-Copyright (C) 2013 John W. Eaton and others.
-This is free software; see the source code for copying conditions.
-There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
-
-Octave was configured for "x86_64-suse-linux-gnu".
-
-Additional information about Octave is available at http://www.octave.org.
-
-Please contribute if you find this software useful.
-For more information, visit http://www.octave.org/get-involved.html
-
-Read http://www.octave.org/bugs.html to learn how to submit bug reports.
-
-For information about changes from previous versions, type `news'.
-
-octave:1> L=10e-6;
-octave:2> C=47e-12;
-octave:3> f=1/(2*pi*sqrt(L*C))
-f =  7.3413e+06
-octave:4> quit
-vvk@linux-bmx0:~> 
-\end{verbatim}
-\caption{Расчёт резонансной частоты LC-контура в командной
-строке Octave}\label{LC_term}
-\end{figure}
-
-В переменной \verb|ans| хранится результат последней операции, если команда не
-содержит знака присваивания. Следует помнить, что значение переменной \verb|ans|
-изменяется после каждого вызова команды без операции присваивания.
-
-
-Теперь рассмотрим, как решить эту же задачу в программном режиме. Вызовем любой
-текстовый редактор, например \verb|kwrite| в системе Linux, но подойдёт даже
-обычный Notepad для Windows, в окне которого последовательно введём следующие
-команды, приведённые в листинге \ref{LC_mfile}.
-
-\begin{lstlisting}[caption=Файл LC-kontur.m,label=LC_mfile]
-#!/usr/bin/octave -qf # Первая строка --- тип интерпретатора
-L=10e-6; # Объявим переменную L. Индуктивность катушки, Гн
-C=47e-12; # Объявим переменную С. Ёмкость конденсатора, Ф
-f=1/(2*pi*sqrt(L*C)) # Считаем резонансную частоту и
-# выводим её на экран
-#pause # Раскомментировать строку для Windows. Задерживает выполнение скрипта
-# до тех пор пока пользователь не нажмёт Enter.
-\end{lstlisting}
-
-Сохраним введённые команды в виде файла \verb|LC-kontur.m|. Скрипты Octave
-обычно имеют расширение \verb|*.m|. Теперь эту программу необходимо запустить на
-выполнение. В системе Linux нужно сначала сделать файл исполняемым любым
-способом, например из командной строки или файлового менеджера. Чтобы дать
-скрипту права на исполнение и затем запустить его нужно выполнить в каталоге,
-где находится файл скрипта следующие команды:
-
-\begin{verbatim}
-chmod a+x LC-kontur.m
-./LC-kontur
-\end{verbatim}
-
-В результате выполнения команд в окне терминала напечатается вычисленное
-значение резонансной частоты \verb|f =  7.3413e+06|.
-
 \section{Матрицы и массивы}
 
 
@@ -642,10 +540,115 @@ octave:4>
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Plot-ex.png}
+\includegraphics[width=0.8\textwidth]{Plot-ex.png}
 \end{center}
 \caption{Графическое окно системы Octave}\label{gr_wind}
 \end{figure}
+
+
+
+\section{Пакетный и терминальный режимы работы Octave}
+
+Возможны два варианта решения любой задачи в Octave:
+
+1. Терминальный режим. В этом режиме в окно интерпретатора
+последовательно вводятся отдельные команды.
+
+2. Программный режим. В этом режиме создаётся текстовый файл с расширением
+\verb|.m|, в котором хранятся последовательно выполняемые команды Octave. Затем
+этот текстовый файл (программа на языке Octave) запускается на выполнение
+в среде Octave. 
+
+Рассмотрим пример решения задач в обоих режимах.
+
+Рассчитаем резонансную частоту LC - контура по формуле, известной из курса
+электротехники:
+
+\begin{equation}
+ f=\frac{1}{2\pi\sqrt{LC}}
+\end{equation}
+
+Где $L$ --- индуктивность катушки, Гн;
+ 
+$C_{к}$ --- ёмкость конденсатора, Ф;
+
+$f$ --- частота, Гц
+
+
+
+Чтобы решить нашу задачу в терминальном режиме введём последовательно после
+того как Octave запустится и выдаст приглашение, подобное
+рис.\ref{octave-start}, команды, показанные на рис. \ref{LC_term}. На рисунке
+приведён вывод для Linux, отличие для системы Windows заключается только в
+способе запуска программы.
+
+\begin{figure}[!ht]
+\begin{verbatim}
+vvk@linux-bmx0:~> octave
+GNU Octave, version 3.6.4
+Copyright (C) 2013 John W. Eaton and others.
+This is free software; see the source code for copying conditions.
+There is ABSOLUTELY NO WARRANTY; not even for MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  For details, type `warranty'.
+
+Octave was configured for "x86_64-suse-linux-gnu".
+
+Additional information about Octave is available at http://www.octave.org.
+
+Please contribute if you find this software useful.
+For more information, visit http://www.octave.org/get-involved.html
+
+Read http://www.octave.org/bugs.html to learn how to submit bug reports.
+
+For information about changes from previous versions, type `news'.
+
+octave:1> L=10e-6;
+octave:2> C=47e-12;
+octave:3> f=1/(2*pi*sqrt(L*C))
+f =  7.3413e+06
+octave:4> quit
+vvk@linux-bmx0:~> 
+\end{verbatim}
+\caption{Расчёт резонансной частоты LC-контура в командной
+строке Octave}\label{LC_term}
+\end{figure}
+
+В переменной \verb|ans| хранится результат последней операции, если команда не
+содержит знака присваивания. Следует помнить, что значение переменной \verb|ans|
+изменяется после каждого вызова команды без операции присваивания.
+
+
+Теперь рассмотрим, как решить эту же задачу в программном режиме. Вызовем любой
+текстовый редактор, например \verb|kwrite| в системе Linux, но подойдёт даже
+обычный Notepad для Windows, в окне которого последовательно введём следующие
+строки, приведённые в листинге \ref{LC_mfile}. Полученный файл называется
+\emph{скриптом}.
+
+\begin{lstlisting}[caption=Файл LC-kontur.m,label=LC_mfile]
+#!/usr/bin/octave -qf # Первая строка --- тип интерпретатора
+L=10e-6; # Объявим переменную L. Индуктивность катушки, Гн
+C=47e-12; # Объявим переменную С. Ёмкость конденсатора, Ф
+f=1/(2*pi*sqrt(L*C)) # Считаем резонансную частоту и
+# выводим её на экран
+#pause # Раскомментировать строку для Windows. Задерживает выполнение скрипта
+# до тех пор пока пользователь не нажмёт Enter.
+\end{lstlisting}
+
+Сохраним введённые команды в виде файла \verb|LC-kontur.m|. Скрипты Octave
+обычно имеют расширение \verb|*.m|. Теперь эту программу необходимо запустить на
+выполнение. В системе Linux нужно сначала сделать файл исполняемым любым
+способом, например из командной строки или файлового менеджера. Чтобы дать
+скрипту права на исполнение и затем запустить его нужно выполнить в каталоге,
+где находится файл скрипта следующие команды:
+
+\begin{verbatim}
+chmod a+x LC-kontur.m
+./LC-kontur
+\end{verbatim}
+
+В результате выполнения команд в окне терминала напечатается вычисленное
+значение резонансной частоты \verb|f =  7.3413e+06|.
+
 
 \section{Заключение}
 
