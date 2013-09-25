@@ -1,0 +1,211 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[koi8-r]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[justification=centering,labelsep=period]{caption}
+\usepackage{indentfirst}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{textcomp}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{fontogr}
+% \usepackage{pscyr}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+
+
+% \renewcommand{\captionlabeldelim} {.}
+
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+\unitlength=1mm
+
+\usepackage{listings} %% собственно, это и есть пакет listings
+% \usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}} %% это сделает текст заголовка белым
+%% код ниже нарисует серую рамочку вокруг заголовка кода.
+\DeclareCaptionFormat{listing}{\colorbox{white}{\parbox{\textwidth}{#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=black,textfont=black}
+\renewcommand{\lstlistingname}{Листинг}
+
+
+\begin{document}
+
+
+\usetikzlibrary{arrows}
+
+\lstset{ %
+ language=Bash,                 % выбор языка для подсветки (здесь это С)
+ basicstyle=\small\ttfamily, % размер и начертание шрифта для подсветки кода
+ numbers=left,               % где поставить нумерацию строк (слева\справа)
+ numberstyle=\tiny,           % размер шрифта для номеров строк
+ stepnumber=1,                   % размер шага между двумя номерами строк
+ numbersep=5pt,                % как далеко отстоят номера строк от
+ % подсвечиваемого кода
+ backgroundcolor=\color{white}, % цвет фона подсветки - используем
+ showspaces=false,            % показывать или нет пробелы специальными
+% отступами
+ showstringspaces=false,      % показывать или нет пробелы в строках
+ showtabs=false,             % показывать или нет табуляцию в строках
+ frame=single,              % рисовать рамку вокруг кода
+ tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+ captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+ breaklines=true,           % автоматически переносить строки (да\нет)
+% wordwrap=true,
+ breakatwhitespace=false, % переносить строки только если есть пробел
+ escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+ }
+
+
+ 
+% \cygfamily
+
+\author{Кузнецов В.В., ассистент кафедры ЭИУ1-КФ}
+\title{Лабораторная работа \No 2 по курсу <<Радиотехнические устройства и
+системы>> \\
+Построение графиков в GNU/Octave}
+\maketitle
+
+
+\section{Цель работы}
+
+Целью семинара является ознакомление с базовыми принципами статистического
+анализа, файловым вводом-выводом и программированием в системе численной
+математики GNU/Octave для применения с целью проведения расчётов различных
+радиотехнических устройств.
+
+Система GNU/Octave --- это высокоуровневый язык программирования,
+предназначенный прежде всего для численных расчётов. Он предоставляет удобный
+интерфейс командной строки для численного решения линейных и нелинейных задач, а
+также для выполнения других численных экспериментов. С помощью GNU/Octave можно
+решать задачи в том числе генерации и обработки сигналов. Установить GNU/Octave
+для Linux можно в один клик через пакетный менеджер, а для Windows её можно
+бесплатно скачать с сайта разработчика \url{http://octave.sourceforge.net}. 
+
+Octave работает в режиме командной строки. GNU/Octave позволяет выполнять
+операции с действительными и комплексными числами, матрицами, решать системы
+линейных уравнений, обрабатывать данные, строить графики и диаграммы. Синтаксис
+команд Octave близок к языку С и повторяет среду Matlab.
+
+В ходе выполнения лабораторной работы необходимо ознакомится с принципами
+статистического анализа, файловым вводом-выводом и программированием в среде
+GNU/Octave.
+
+При подготовке руководства использовались материалы с сайтов
+\url{http://mydebianblog.blogspot.com} (на русском языке) и
+\url{http://en.wikibooks.org/wiki/Octave_Programming_Tutorial/Getting_started}
+(на английском языке).
+
+\section{Статистические функции}
+
+К статистическим функциям, относится вычисление математического ожидания $m$
+(среднее значение), математических моментов, среднеквадратического отклонения
+(СКО) $\sigma$.
+
+Рассмотрим функции для вычисления этих параметров:
+
+Сначала сгенерируем массив (вектор) $x$ из случайных чисел, который будет
+служить нам объектом для вычислений. Для этого воспользуемся функцией
+\verb|randn()|.
+
+\begin{verbatim}
+octave:1> x=randn(1,10000); # генерируем вектор из 10000 случайных чисел.
+\end{verbatim}
+
+Теперь вычислим математическое ожидание (Арифметическое среднее).
+Арифметическое среднее значений для массива из $N$ элементов вычисляется по
+формуле:
+\begin{equation}
+ \overline{x}=\frac{1}{N}\sum_{i=0}^{N}x_i
+\end{equation}
+
+В GNU/Octave для вычисления математического ожидания используется функция
+\verb|mean()|. Параметром функции служит массив, среднее арифметическое
+значение элементов которого нужно вычислить: Например:
+
+\begin{verbatim}
+octave:2> mean(x)
+ans =  0.0070703
+\end{verbatim}
+
+СКО вычисляется по формуле:
+
+\begin{equation}
+\sigma=\sqrt{\frac{1}{N}\sum_{i=0}^{N}(x_i-\overline{x})^2}
+\end{equation}
+
+Для вычисления СКО в GNU/Octave служит функция \verb|std()|. Например:
+\begin{verbatim}
+octave:3> std(x)
+ans =  1.0037
+\end{verbatim}
+
+Часто необходимо посчитать сумму всех элементов массива. Для этого служит
+функция \verb|sum()|. Параметром функции служит массив, сумму элементов
+которого нужно вычислить. Например:
+\begin{verbatim}
+octave:4> sum(x)
+ans =  70.703
+\end{verbatim}
+
+Максимальный элемент массива возвращает функция \verb|max()|, а минимальный ---
+функция \verb|min()|. Например:
+
+\begin{verbatim}
+octave:4> max(x) # считаем максимум
+ans =  3.7975
+octave:5> min(x) # считаем минимум
+ans = -3.8206
+\end{verbatim}
+
+\section{Файловый ввод-вывод}
+
+Функции ввода - вывода предназначены для ввода данных из текстовых и двоичных
+файлов и для сохранения результатов вычислений в текстовые и двоичные файлы.
+
+\subsection{Ввод-вывод на терминал}
+
+Чтобы вывести на терминал значение переменной, служит функция \verb|disp()|.
+Например:
+\begin{verbatim}
+octave:6> A = 1;
+octave:7> disp(A);
+ 1
+\end{verbatim}
+
+Чтобы ввести значение с переменной с клавиатуры, служит функция \verb|input()|.
+Функция возвращает считанное числовое значение, а параметром функции служит
+приглашение при вводе (строка, заключённая в двойные кавычки).
+\begin{verbatim}
+octave:8> A=input("Enter number: ");
+Enter number: 12 
+octave:9> disp(A); # Мы ввели число 12
+ 12 
+\end{verbatim}
+
+
+\subsection{Ввод-вывод в текстовые файлы}
+
+
+\section{Программирование}
+
+\subsection{Ветвление}
+
+\subsection{Циклы}
+
+
+\section{Заключение}
+
+В результате выполнения лабораторной работы произведено ознакомление с
+принципами визуализации информации в системе GNU/Octave.
+
+\end{document}
