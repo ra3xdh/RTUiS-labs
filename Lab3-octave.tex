@@ -216,7 +216,7 @@ printf(fmt, var1, var2, ...)
 причем соответствие устанавливается в порядке их следования. Например, при
 вызове следующей функции \verb|printf()| на экране будет отображено
 \begin{verbatim}
-octave:17> printf("Hi %c %d %s \n", 'c', 10, "there!");
+octave:10> printf("Hi %c %d %s \n", 'c', 10, "there!");
 Hi c 10 there!
 \end{verbatim}
 
@@ -303,23 +303,23 @@ Hi c 10 there!
 Пример использования спецификаторов:
 
 \begin{verbatim}
-octave:18> printf("The color: %s\n", "black");
+octave:11> printf("The color: %s\n", "black");
 The color: black
-octave:19> printf("First number: %d\n", 12345);
+octave:12> printf("First number: %d\n", 12345);
 First number: 12345
-octave:20> printf("Second number: %04d\n", 25);
+octave:13> printf("Second number: %04d\n", 25);
 Second number: 0025
-octave:21> printf("Third number: %i\n", 1234);
+octave:14> printf("Third number: %i\n", 1234);
 Third number: 1234
-octave:22> printf("Float number: %3.2f\n", 3.14159);
+octave:15> printf("Float number: %3.2f\n", 3.14159);
 Float number: 3.14
-octave:23> printf("Hexadecimal: %x\n", 255);
+octave:16> printf("Hexadecimal: %x\n", 255);
 Hexadecimal: ff
-octave:24> printf("Octal: %o\n", 255);
+octave:17> printf("Octal: %o\n", 255);
 Octal: 377
-octave:25> printf("Unsigned value: %u\n", 150);
+octave:18> printf("Unsigned value: %u\n", 150);
 Unsigned value: 150
-octave:26> printf("Just print the percentage sign %%\n", 10);
+octave:19> printf("Just print the percentage sign %%\n", 10);
 Just print the percentage sign %
 \end{verbatim}
 
@@ -347,28 +347,63 @@ o и O, то восьмеричное число будет выведено с префиксом 0. Символ \# нельзя
 
 \subsection{Ветвление}
 
+Ветвление организуется в GNU/Octave аналогично языку С при помощи оператора
+\verb|if|.
+
+Формат оператора \verb|if| следующий:
+
 \begin{verbatim}
-octave:16> a=2; if a>2 printf("Greater then two\n"); elseif a<2 printf("Less
+if условие_1
+  оператор_1
+elseif условие_2
+  оператор_2
+ ...
+elseif условие_N
+  оператор_N
+else
+  оператор_3
+end
+\end{verbatim}
+
+Здесь реализована лестница if - else -if. Если условие 1 истинно, то выполняется
+оператор 1, иначе если условие 2 истинно, то выполняется оператор 2 и так далее.
+Если ни одно из условий не является истинным, то выполняется оператор 3. 
+
+Рассмотрим пример. Данный код печатает сообщение "Greater then two", если
+переменная \verb|a| больше двух, если переменная меньше двух печатается
+сообщение "Less then two" и если переменная равна двум, то печатается сообщение
+"Equals two".
+
+\begin{verbatim}
+octave:20> a=2; if a>2 printf("Greater then two\n"); elseif a<2 printf("Less
 then two\n"); else printf("Equals two\n"); end
 Equals two
-octave:17>
 \end{verbatim}
 
 
 \subsection{Циклы}
 
+Аналогично языку С в GNU/Octave реализованы циклы с предусловием (while) с
+постусловием (do-while) и с параметром (for). 
+
+Рассмотрим наиболее часто применяемый цикл \verb|for|. В общем случае цикл имеет
+следующий вид:
+
 \begin{verbatim}
-octave:13> for i=1:10 disp(i) end;
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
- 10
+for переменная = вектор
+   ... # тело цикла
+end
+\end{verbatim}
+
+Переменной поочерёдно присваивается значение каждого из элементов вектора
+(массив, матрица-строка, матрица-столбец) и каждый раз выполняется тело цикла.
+
+Рассмотрим пример использования цикла \verb|for|. Данный код печатает числа от 1
+до 10 и разделяет их пробелом.
+
+\begin{verbatim}
+octave:21> for i=1:10 printf("%d ",i) end; printf("\n");
+ 1 2 3 4 5 6 7 8 9 10
 \end{verbatim}
 
 
@@ -383,14 +418,12 @@ octave:13> for i=1:10 disp(i) end;
 
 \begin{verbatim}
 A = rand(3, 1e6);
-tic;
 fid = fopen('data.txt', 'w+');
 for i=1:size(A, 1)
     fprintf(fid, '%f ', A(i,:));
     fprintf(fid, '\n');
 end
 fclose(fid);
-toc
 \end{verbatim}
 
 
