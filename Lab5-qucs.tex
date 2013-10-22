@@ -1,0 +1,110 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[koi8-r]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{mathtext}
+\usepackage[T2A]{fontenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[justification=centering,labelsep=period]{caption}
+\usepackage{indentfirst}
+\usepackage[pdftex]{graphicx,color}
+\usepackage{textcomp}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[top=20mm,bottom=20mm,left=20mm,right=20mm]{geometry}
+
+
+
+% \renewcommand{\captionlabeldelim} {.}
+
+\makeatletter
+\renewcommand\@biblabel[1]{#1.}
+\makeatother
+
+\unitlength=1mm
+
+\usepackage{listings} %% собственно, это и есть пакет listings
+% \usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}} %% это сделает текст заголовка белым
+%% код ниже нарисует серую рамочку вокруг заголовка кода.
+\DeclareCaptionFormat{listing}{\colorbox{white}{\parbox{\textwidth}{#1#2#3}}}
+% \captionsetup[lstlisting]{format=listing,labelfont=black,textfont=black}
+\renewcommand{\lstlistingname}{Листинг}
+
+
+\begin{document}
+
+
+\usetikzlibrary{arrows}
+
+\lstset{ %
+ language=Bash,                 % выбор языка для подсветки (здесь это С)
+ basicstyle=\small\ttfamily, % размер и начертание шрифта для подсветки кода
+ numbers=left,               % где поставить нумерацию строк (слева\справа)
+ numberstyle=\tiny,           % размер шрифта для номеров строк
+ stepnumber=1,                   % размер шага между двумя номерами строк
+ numbersep=5pt,                % как далеко отстоят номера строк от
+ % подсвечиваемого кода
+ backgroundcolor=\color{white}, % цвет фона подсветки - используем
+ showspaces=false,            % показывать или нет пробелы специальными
+% отступами
+ showstringspaces=false,      % показывать или нет пробелы в строках
+ showtabs=false,             % показывать или нет табуляцию в строках
+ frame=single,              % рисовать рамку вокруг кода
+ tabsize=2,                 % размер табуляции по умолчанию равен 2 пробелам
+ captionpos=t,              % позиция заголовка вверху [t] или внизу [b] 
+ breaklines=true,           % автоматически переносить строки (да\нет)
+% wordwrap=true,
+ breakatwhitespace=false, % переносить строки только если есть пробел
+ escapeinside={\%*}{*)}   % если нужно добавить комментарии в коде
+ }
+
+
+ 
+% \cygfamily
+
+\author{Кузнецов В.В., ассистент кафедры ЭИУ1-КФ}
+\title{Лабораторная работа \No 5 по курсу <<Радиотехнические устройства и
+системы>> \\
+Моделирование АМ детектора и балансного смесителя в программе Qucs}
+\maketitle
+
+
+\section{Цель работы}
+
+Цель данного лабораторной работы --- изучение функционирования детектора
+амплитудно - модулированных (АМ) колебаний (амплитудного детектора) и балансного
+смесителя с помощью моделирования в программе Qucs. 
+
+Данная программа основана на вновь разработанном ядре схемотехнического
+моделирования (разработка совместно с Берлинским институтом высокочастотной
+техники) и работает под управлением операционных систем (ОС) Linux и Windows. В
+данной программе возможно моделирование аналоговых и цифровых схем,
+моделирование на постоянном и переменном токе и моделирование переходного
+процесса. Недостатком программы является разделение аналогового и  цифрового
+моделирования.
+
+Родной операционной системой для Qucs является Linux, и при работе на этой
+системы следует ожидать наибольшей производительности. Настоятельно
+рекомендуется использовать для работы программы ОС Linux.
+
+Версию Qucs для Linux можно установить в один клик, используя пакетный
+менеджер, а версию для Windows можно скачать бесплатно с сайта разработчика
+\url{http://qucs.souceforge.net}.
+
+\section{Амплитудный детектор}
+
+\section{Балансный смеситель}
+
+\section{Заключение}
+
+В результате выполнения лабораторной работы произведено ознакомление с
+типами анализа электронных схем в схемотехническом моделировщике Qucs. Выполнен
+анализ работы резонансного усилителя на полевом транзисторе.
+
+\end{document}
