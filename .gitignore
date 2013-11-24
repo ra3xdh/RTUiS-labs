@@ -3,6 +3,7 @@
 *.aux
 *.log
 *.tex~
+*.pdf_tex~
 *swp
 octave-core
 *.backup

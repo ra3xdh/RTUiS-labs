@@ -1,0 +1,76 @@
+%% Creator: Inkscape inkscape 0.48.3.1, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'RF-ampl-S21.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{666bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.39459459)%
+    \put(0,0){\includegraphics[width=\unitlength]{Lab6ris/RF-ampl-S21.pdf}}%
+    \put(0.0960961,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2e6}}}%
+    \put(0.15615616,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{4e6}}}%
+    \put(0.21501502,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{6e6}}}%
+    \put(0.27507508,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{8e6}}}%
+    \put(0.33513514,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1e7}}}%
+    \put(0.38558559,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1.2e7}}}%
+    \put(0.44564565,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1.4e7}}}%
+    \put(0.50570571,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1.6e7}}}%
+    \put(0.56576577,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{1.8e7}}}%
+    \put(0.63303303,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2e7}}}%
+    \put(0.68468468,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2.2e7}}}%
+    \put(0.74474474,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2.4e7}}}%
+    \put(0.8048048,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2.6e7}}}%
+    \put(0.86366366,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{2.8e7}}}%
+    \put(0.93213213,0.06066066){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{3e7}}}%
+    \put(0.06246246,0.09309309){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.06246246,0.2){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{5}}}%
+    \put(0.05165165,0.30690691){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.47447447,0.03903904){\color[rgb]{0,0,1}\makebox(0,0)[lb]{\smash{frequency}}}%
+    \put(0.47447447,0.01741742){\color[rgb]{1,0,0}\makebox(0,0)[lb]{\smash{frequency}}}%
+    \put(0.04324324,0.19279279){\color[rgb]{0,0,1}\rotatebox{90}{\makebox(0,0)[lb]{\smash{S[2,1]}}}}%
+    \put(0.02162162,0.19279279){\color[rgb]{1,0,0}\rotatebox{90}{\makebox(0,0)[lb]{\smash{S[1,2]}}}}%
+  \end{picture}%
+\endgroup%
