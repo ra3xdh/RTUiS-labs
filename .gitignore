@@ -9,5 +9,5 @@ octave-core
 *.backup
 *.out
 *eps-converted-to.pdf
-
+*~
 
